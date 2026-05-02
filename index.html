@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 Years of You | Our Story</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;500&display=swap');
+        
+        body { background-color: #000; color: #fff; margin: 0; overflow: hidden; font-family: 'Inter', sans-serif; }
+        .scene { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; }
+        
+        /* Dual-Layer Image Logic */
+        .img-container { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .bg-blur { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(20px) brightness(0.3); transform: scale(1.1); }
+        .img-original { position: relative; width: 100%; height: 100%; object-fit: contain; z-index: 1; filter: brightness(0.7) contrast(1.1); }
+
+        .content { text-align: center; padding: 0 10%; z-index: 10; max-width: 800px; background: transparent; }
+        .line { opacity: 0; transform: translateY(40px); margin-bottom: 1.5rem; line-height: 1.6; text-shadow: 2px 2px 15px rgba(0,0,0,0.9); }
+        .font-magic { font-family: 'Playfair Display', serif; }
+        
+        #overlay { position: fixed; inset: 0; background: #000; z-index: 100; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="overlay" onclick="startStory()">
+        <div class="text-center">
+            <div class="w-20 h-20 border border-white/30 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform">
+                <div class="w-0 h-0 border-t-[10px] border-t-transparent border-l-[15px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
+            </div>
+            <p class="tracking-[0.4em] text-[10px] uppercase opacity-60">Turn on sound & Tap to begin</p>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop><source src="piano.mp3" type="audio/mpeg"></audio>
+
+    <!-- SCENE 0 & 1: Childhood -->
+    <div class="scene" id="s1">
+        <div class="img-container"><img src="old1.jpg" class="bg-blur"><img src="old1.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-xl italic font-magic">“Before I even knew you existed…”</p>
+            <p class="line text-2xl font-semibold">“You were already becoming someone special.”</p>
+        </div>
+    </div>
+
+    <div class="scene" id="s2">
+        <div class="img-container"><img src="old2.jpg" class="bg-blur"><img src="old2.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-xl italic font-magic">“You had your own world. Your own people.”</p>
+            <p class="line text-xl italic font-magic">“Your own story...”</p>
+            <p class="line text-2xl font-bold mt-4">“And I wasn’t part of it.”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 2: Destiny Setup -->
+    <div class="scene" id="s3">
+        <div class="img-container"><img src="old3.jpg" class="bg-blur"><img src="old3.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-2xl">“But somehow...”</p>
+            <p class="line text-2xl font-magic italic">“Life was slowly writing a moment…”</p>
+            <p class="line text-3xl font-bold">“Where our paths would finally cross.”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 3: Transition (Black) -->
+    <div class="scene bg-black" id="s4">
+        <div class="content">
+            <p class="line text-4xl font-magic">“And when it did...”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 4: First Impression -->
+    <div class="scene" id="s5">
+        <div class="img-container"><img src="old5.jpg" class="bg-blur" style="filter: grayscale(1) blur(20px) brightness(0.2);"><img src="old5.jpg" class="img-original" style="filter: grayscale(1) brightness(0.4);"></div>
+        <div class="content">
+            <p class="line text-xl">“8th Standard. At first…”</p>
+            <p class="line text-4xl font-bold text-red-400">“I was scared of you.”</p>
+            <p class="line text-xl mt-4 opacity-80">“The class leader. Strict. Confident.”</p>
+        </div>
+    </div>
+
+    <div class="scene" id="s6">
+        <div class="img-container"><img src="old6.jpg" class="bg-blur" style="filter: grayscale(1) blur(20px) brightness(0.2);"><img src="old6.jpg" class="img-original" style="filter: grayscale(1) brightness(0.4);"></div>
+        <div class="content">
+            <p class="line text-2xl font-magic italic">“Honestly?”</p>
+            <p class="line text-5xl font-black tracking-tighter">“I didn’t like you.”</p>
+            <p class="line text-xl opacity-50 mt-4">“Not even a little.”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 5: The Turning Point -->
+    <div class="scene" id="s7">
+        <div class="img-container"><img src="old7.jpg" class="bg-blur"><img src="old7.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-2xl italic">“Then one normal day…”</p>
+            <p class="line text-5xl font-bold">“We shared a seat.”</p>
+            <p class="line text-xl mt-6 opacity-60">“That’s it. Nothing big... but everything started there.”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 6: Becoming Close -->
+    <div class="scene" id="s8">
+        <div class="img-container"><img src="old8.jpg" class="bg-blur"><img src="old8.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-2xl">“Two weeks. No planning. No realization.”</p>
+            <p class="line text-4xl font-bold text-yellow-500">“We just became close.”</p>
+            <p class="line text-xl mt-2 opacity-80">“Talking. Laughing. Trusting.”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 7: Protection -->
+    <div class="scene" id="s9">
+        <div class="img-container"><img src="old9.jpg" class="bg-blur"><img src="old9.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-2xl">“When things weren’t okay, you stood with me.”</p>
+            <p class="line text-3xl font-bold text-blue-300 mt-4">“You didn’t just help...”</p>
+            <p class="line text-5xl font-black">“You protected me.”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 8: Personality -->
+    <div class="scene" id="s10">
+        <div class="img-container"><img src="old10.jpg" class="bg-blur"><img src="old10.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-2xl">“You still shout. You still scold. 😤”</p>
+            <p class="line text-xl mt-4">“But that’s why I trust you. Because behind all that...”</p>
+            <p class="line text-4xl font-bold text-pink-400">“You care the most.”</p>
+        </div>
+    </div>
+
+    <!-- SCENE 9: Sister -->
+    <div class="scene" id="s11">
+        <div class="img-container"><img src="old11.jpg" class="bg-blur"><img src="old11.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-2xl">“We aren’t related by blood...”</p>
+            <p class="line text-5xl font-black mb-4">“My one and only Sister.”</p>
+            <p class="line text-xl italic opacity-70">“Not by chance... but by heart.”</p>
+        </div>
+    </div>
+
+    <div class="scene" id="s12">
+        <div class="img-container"><img src="old12.jpg" class="bg-blur"><img src="old12.jpg" class="img-original"></div>
+        <div class="content">
+            <p class="line text-2xl">“From being scared of you...”</p>
+            <p class="line text-3xl font-bold text-yellow-400">“To needing you.”</p>
+            <p class="line text-xl mt-4 italic opacity-80">“That is our story.”</p>
+        </div>
+    </div>
+
+    <!-- FINAL BIRTHDAY SLIDE -->
+    <div class="scene bg-white text-black" id="s13">
+        <div class="content">
+            <p class="line text-sm uppercase tracking-[0.5em] mb-4">Final Chapter</p>
+            <h1 class="line text-6xl font-black mb-4">Happy 18th Birthday</h1>
+            <h2 class="line text-2xl font-bold italic font-magic">My Best Friend. My Protector. My Sister. ❤️</h2>
+        </div>
+    </div>
+
+    <script>
+        function startStory() {
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.6;
+            music.play();
+            
+            gsap.to("#overlay", { opacity: 0, duration: 1.5, onComplete: () => {
+                document.getElementById('overlay').style.display = 'none';
+                playCinematic();
+            }});
+        }
+
+        function playCinematic() {
+            const tl = gsap.timeline();
+            const totalScenes = 12; // 12 photo scenes
+
+            for (let i = 1; i <= totalScenes; i++) {
+                tl.to(`#s${i}`, { visibility: "visible", opacity: 1, duration: 2 })
+                  .to(`#s${i} .line`, { opacity: 1, y: 0, stagger: 2.8, duration: 1.5 })
+                  .to(`#s${i}`, { opacity: 0, duration: 1.5, delay: 3 });
+            }
+
+            // Slide 13 - Final Birthday Wish
+            tl.to("#s13", { visibility: "visible", opacity: 1, duration: 2.5 })
+              .to("#s13 .line", { opacity: 1, y: 0, stagger: 2, duration: 1.5 });
+        }
+    </script>
+</body>
+</html>
